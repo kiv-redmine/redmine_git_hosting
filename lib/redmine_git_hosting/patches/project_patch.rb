@@ -17,6 +17,9 @@ module RedmineGitHosting
 
           # Place additional constraints on repository identifiers because of multi repos
           validate :additional_constraints_on_identifier
+
+          # Many-to-Many relation between repositories and projects
+          has_and_belongs_to_many :available_repositories, class_name: 'Repository', join_table: 'projects_repositories'
         end
       end
 
